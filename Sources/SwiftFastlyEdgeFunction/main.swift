@@ -1,6 +1,6 @@
 import Compute
 
 try await onIncomingRequest { req, res in
-    let text = "Hello World!"
-    try await res.status(200).send(text)
+    let secrets = try ConfigStore(name: "secrets")
+    try await res.status(200).send(secrets.get("hello"))
 }
